@@ -55,6 +55,7 @@ class MeshLibrary:
 
         with open("mesh_data.txt", "w") as f:
             f.write("\n".join(text))
+        print(f"Data of {len(self.meshes)} meshes were saved to mesh_data.txt")
 
 
 directory = input("Enter directory path containing .obj files: ")
