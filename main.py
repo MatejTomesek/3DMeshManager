@@ -12,12 +12,15 @@ class OBJLoader:
         faces = 0
         name = os.path.basename(filepath)
 
-        with open(filepath, "r") as f:
-            for line in f:
-                if line.startswith("v "):  # vertex line
-                    vertices += 1
-                elif line.startswith("f "):  # face line
-                    faces += 1
+        try:
+            with open(filepath, "r") as f:
+                for line in f:
+                    if line.startswith("v "):  # vertex line
+                        vertices += 1
+                    elif line.startswith("f "):  # face line
+                        faces += 1
+        except Exception as e:
+            print(f"[ERROR] Failed to read OBJ file: {filepath}")
 
         return Mesh(name=name, vertices=vertices, faces=faces)
 
@@ -26,6 +29,13 @@ class MeshLibrary:
         self.meshes = []
 
     def load_from_directory(self, directory: str):
+        try:
+            files = os.listdir(directory)
+        except FileNotFoundError:
+            print(f"[ERROR] Directory not found: {directory}")
+        except PermissionError:
+            print(f"[ERROR] Permission denied: {directory}")
+
         for filename in os.listdir(directory):
             if filename.endswith(".obj"):
                 filepath = os.path.join(directory, filename)
@@ -36,20 +46,22 @@ class MeshLibrary:
                 print(f" - {filename} is not a .obj file. Please convert to .obj and try again.")
 
     def summary(self):
+        text = ["Mesh Library Summary"]
+
         print("Mesh Library Summary")
         for mesh in self.meshes:
             print(f" - {mesh.name}: {mesh.vertices} vertices and {mesh.faces} faces")
+            text.append(f" - {mesh.name}: {mesh.vertices} vertices and {mesh.faces} faces")
+
+        with open("mesh_data.txt", "w") as f:
+            f.write("\n".join(text))
 
 
-if __name__ == "__main__":
-    library = MeshLibrary()
+directory = input("Enter directory path containing .obj files: ")
+directory = os.path.abspath(directory)
 
-    library.load_from_directory("meshes")
-    library.summary()
-
-
-
-# dodat exception try-except a errory pokud soubor obj nebude citelny napriklad - asi do samostatneho folderu??
-# dovolit jako variantu?? uzivatlsky vstup = directory s meshema a to osetrit podminkami v samostatnem souboru?
+library = MeshLibrary()
+library.load_from_directory(directory)
+library.summary()
 
 
