@@ -57,12 +57,12 @@ class MeshLibrary:
             f.write("\n".join(text))
         print(f"Data of {len(self.meshes)} meshes were saved to mesh_data.txt")
 
+if __name__ == "__main__":
+    directory = input("Enter directory path containing .obj files: ")
+    directory = os.path.abspath(directory)
 
-directory = input("Enter directory path containing .obj files: ")
-directory = os.path.abspath(directory)
-
-library = MeshLibrary()
-library.load_from_directory(directory)
-library.summary()
+    library = MeshLibrary()
+    library.load_from_directory(directory)
+    library.summary()
 
 
