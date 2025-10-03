@@ -1,7 +1,13 @@
 Mesh Library Summary
  - cube_test - Copy.obj: 8 vertices and 6 faces
+Life advice: cube_test - Copy.obj: Give up your seat for someone who needs it.
  - cube_test.obj: 8 vertices and 6 faces
+Life advice: cube_test.obj: When faced with a choice, do both.
  - humanoid - Copy.obj: 20694 vertices and 20692 faces
+Life advice: humanoid - Copy.obj: If you get stuck, try doing the opposite of what the solution requires.
  - humanoid.obj: 20694 vertices and 20692 faces
+Life advice: humanoid.obj: Eat food. Not too much, mostly plants.
  - Plane.obj: 4 vertices and 1 faces
+Life advice: Plane.obj: You're not as fat as you think you are.
  - sphere_test.obj: 482 vertices and 512 faces
+Life advice: sphere_test.obj: Never cut your own fringe.

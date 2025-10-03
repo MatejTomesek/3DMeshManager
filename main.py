@@ -1,10 +1,12 @@
 import os
+from description_gen_api import describe_mesh
 
 class Mesh:
     def __init__(self, name: str, vertices: int = 0, faces: int = 0):
         self.name = name
         self.vertices = vertices
         self.faces = faces
+        self.description = None
 
 class OBJLoader:
     def load(filepath: str) -> Mesh:
@@ -50,8 +52,17 @@ class MeshLibrary:
 
         print("Mesh Library Summary")
         for mesh in self.meshes:
+
+            # API
+            if not mesh.description:
+                mesh.description = describe_mesh(mesh.name)
+
             print(f" - {mesh.name}: {mesh.vertices} vertices and {mesh.faces} faces")
             text.append(f" - {mesh.name}: {mesh.vertices} vertices and {mesh.faces} faces")
+
+            # API
+            print(f"Life advice: {mesh.description}")
+            text.append(f"Life advice: {mesh.name}: {mesh.description}")
 
         with open("mesh_data.txt", "w") as f:
             f.write("\n".join(text))
