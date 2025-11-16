@@ -1,7 +1,12 @@
 Mesh Library Summary
- - cube_test - Copy.obj: 8 vertices and 6 faces
  - cube_test.obj: 8 vertices and 6 faces
- - humanoid - Copy.obj: 20694 vertices and 20692 faces
+ - Dimensions (cm): 200x200x200
+
  - humanoid.obj: 20694 vertices and 20692 faces
- - Plane.obj: 4 vertices and 1 faces
+ - Dimensions (cm): 1449x1830x362
+
+ - plane.obj: 4 vertices and 1 faces
+ - Dimensions (cm): 200x0x200
+
  - sphere_test.obj: 482 vertices and 512 faces
+ - Dimensions (cm): 200x200x200
